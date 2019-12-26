@@ -19,7 +19,7 @@ html {
     --secondary-color: #777171;
     --text-color: #9c9393;
     --hover-text-color: #bdb8b8;
-    --active-icon-color: #22ae7e7;
+    --active-icon-color: #2ae7e7;
 }
 
 .sidebar {
@@ -31,7 +31,55 @@ html {
     padding: 1.5rem 1rem; /* top/bottom right/left 
     /* to maintain the same size as the box */
     box-sizing: border-box;
+}
 
+/* hamburger menu */
+.hamburger-menu {
+    width: 3.5rem;
+    height: 3.5rem;
+    /* background-color: #fff; */
+    /* by default its at top left - we need top right corner */
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* center the lines using padding */
+    padding: .5rem; /* width of icon is 3.5 rem, line is 2.5rem, center with .5 */
+    box-sizing: border-box; /* fixes size of box */
+    
+}
+
+.line {
+    width: 2.5rem;
+    height: .3rem;
+    background-color: var(--secondary-color);
+    /* position the lines, start with absolute */
+    position: absolute;
+    /* transform origin to make the X */
+    transform-origin: left;
+}
+
+.line-1 {
+    top: 1.2rem;
+}
+.line-2 {
+    top: 1.8rem;
+}
+.line-3 {
+    top: 2.4rem;
+}
+
+.change .line-1 {
+    top: 2.4rem;
+    transform: rotate(-40deg) translateY(0.3rem);
+}
+
+.change .line-2 {
+    opacity: 0;
+}
+
+.change .line-3 {
+    top: 1.2rem;
+    transform: rotate(40deg) translateY(-0.3rem);
 }
 
 .card {
@@ -81,7 +129,164 @@ html {
     letter-spacing: .1rem;
 }
 
+.search-button {
+    background-color: transparent;
+    border: none;
+    transform: translateX(-150%);
+}
 
+.nav-list {
+    margin-top: 3rem;
+}
+
+.nav-item {
+    margin: 2rem 0;
+}
+
+.nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.nav-link-text {
+    font-size: 1.8rem;
+    padding-left: 1rem;
+    /* take all available space in the flex container */
+    flex-grow: 1;
+}
+
+.nav-link i:first-child {
+    /* box for the icons */
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-color);
+    /* center items in the box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+
+    /* for hover effect */
+    transition: color .2s;
+}
+
+/* first-child is the icon */
+.nav-link:hover i:first-child {
+    color: var(--active-icon-color);
+}
+
+/* last child is the angle arrows */
+.nav-link i:last-child {
+    margin-right: 2.5rem;
+    font-size: 1.6rem;
+}
+
+/* list elements */
+.sub-nav-list{
+    width: 90%;
+    margin-left: auto; /* places to the right */
+}
+
+.sub-nav-link {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color .2s; /* for item color change */
+}
+
+/* create space between the items */
+.sub-nav-item {
+    margin: .5rem 0;
+}
+
+/* hover: change color of items */
+.sub-nav-link:hover {
+    color: var(--hover-text-color);
+}
+
+/* add styles to circles */
+.sub-nav-link i {
+    font-size: 1rem;
+    margin-right: .5rem;
+    /* transition for circle color */
+    transition: color .2s;
+}
+
+/* hover effect for icon */
+.sub-nav-link:hover i{
+    color: var(--active-icon-color);
+}
+
+/* style bottom list */
+.bottom-list {
+    width: 100%;
+    background-color: var(--primary-color);
+    /* position list at bottom of sidebar */
+    position: absolute;
+    bottom: 0;
+    padding: .5rem 0;
+    display: flex;
+    /* space between flex items */
+    justify-content: space-around;
+    /* eliminate space on the left */
+    transform: translateX(-1rem);
+}
+
+.bottom-list-link {
+    position: relative;
+}
+
+.bottom-list-link i{
+    /* change size and color */
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    /* for bottom buttons */
+    transition: color .3s;
+}
+
+/* hover effect for bottom buttons */
+.bottom-list-link:hover i {
+    color: var(--active-icon-color);
+}
+
+.bottom-list-link span {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+
+    /* numbers should be placed at top right corner of icons */
+    position: absolute; /* parent is the bottom-list-link so make it relative above */
+    top: -100%;
+    right: -50%;
+    /* different background for each of the notifications */
+    width: 1.4rem;
+    height: 1.4rem;
+    /* background-color: red; */
+    /* round background, place numbers in center */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bottom-list-item:nth-child(1) span {
+    background-color: #cfa012;
+}
+.bottom-list-item:nth-child(2) span {
+    background-color: #54b154;
+}
+.bottom-list-item:nth-child(3) span {
+    background-color: #b22727;
+}
+
+.search-button i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
 
 .main-section {
     width: 85vw;  /* takes up rest of the page after sidebar which was 15vw */
